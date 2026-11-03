@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Salta Acortadores</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="contenedor">
+    <header class="cabecera">
+      <img src="iconos/icono-48.png" alt="" width="28" height="28">
+      <h1>Salta Acortadores</h1>
+    </header>
+
+    <form id="formulario" class="formulario" autocomplete="off">
+      <label for="enlace" class="oculto">Enlace acortado</label>
+      <input id="enlace" name="enlace" type="text" inputmode="url" spellcheck="false"
+             placeholder="Pega un enlace acortado" required>
+      <button type="submit" id="boton">Revelar</button>
+    </form>
+
+    <section id="resultado" class="resultado" aria-live="polite" hidden></section>
+
+    <section class="ajustes" aria-label="Ajustes">
+      <label class="interruptor">
+        <input type="checkbox" id="autoSaltar">
+        <span>Saltar automáticamente las páginas intermedias</span>
+      </label>
+      <label class="interruptor">
+        <input type="checkbox" id="reescribirEnlaces">
+        <span>Convertir los enlaces de las páginas en enlaces directos</span>
+      </label>
+    </section>
+
+    <footer class="pie">
+      <span id="contador"></span>
+      <a href="#" id="abrirOpciones">Opciones</a>
+    </footer>
+  </main>
+
+  <script src="lib/desacortador.js"></script>
+  <script src="lib/ajustes.js"></script>
+  <script src="lib/resolver-navegador.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

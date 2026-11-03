@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opciones · Salta Acortadores</title>
+  <link rel="stylesheet" href="popup.css">
+  <style>
+    .contenedor { width: auto; max-width: 640px; margin: 40px auto; padding: 0 16px; gap: 18px; }
+    textarea {
+      width: 100%;
+      min-height: 140px;
+      padding: 10px 12px;
+      font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: var(--texto);
+      background: var(--superficie);
+      border: 1px solid var(--borde);
+      border-radius: var(--radio);
+      resize: vertical;
+    }
+    textarea:focus { outline: 2px solid var(--acento); outline-offset: 1px; border-color: transparent; }
+    h2 { font-size: 14px; margin: 0 0 6px; }
+    p { margin: 0 0 8px; color: var(--texto-suave); }
+    details { color: var(--texto-suave); }
+    summary { cursor: pointer; color: var(--texto); }
+    .lista-dominios { columns: 2; margin: 10px 0 0; padding-left: 18px; font-size: 13px; }
+    .fila { display: flex; gap: 12px; align-items: center; }
+    #estado { color: var(--acento); font-size: 13px; }
+  </style>
+</head>
+<body>
+  <main class="contenedor">
+    <header class="cabecera">
+      <img src="iconos/icono-48.png" alt="" width="32" height="32">
+      <h1>Opciones de Salta Acortadores</h1>
+    </header>
+
+    <section class="ajustes">
+      <label class="interruptor">
+        <input type="checkbox" id="autoSaltar">
+        <span>Saltar automáticamente las páginas intermedias cuando el destino viene dentro del enlace</span>
+      </label>
+      <label class="interruptor">
+        <input type="checkbox" id="reescribirEnlaces">
+        <span>Convertir los enlaces de las páginas en enlaces directos</span>
+      </label>
+    </section>
+
+    <section>
+      <h2>Tus acortadores</h2>
+      <p>
+        Agrega otros acortadores o redirectores, uno por línea (por ejemplo <code>acortador.com</code> o
+        <code>sitio.com/salir</code>). En ellos la extensión buscará el destino escondido en cualquier parte del enlace.
+      </p>
+      <textarea id="dominiosExtra" spellcheck="false" placeholder="acortador.com&#10;sitio.com/salir"></textarea>
+      <div class="fila">
+        <button type="button" id="guardar">Guardar</button>
+        <span id="estado" role="status"></span>
+      </div>
+    </section>
+
+    <section>
+      <details>
+        <summary>Sitios incluidos</summary>
+        <ul id="incluidos" class="lista-dominios"></ul>
+      </details>
+    </section>
+
+    <section>
+      <h2>Qué puede y qué no puede hacer</h2>
+      <p>
+        Muchos acortadores con anuncios (ouo.io, linkvertise, shrinkme…) solo entregan el destino después de la
+        cuenta regresiva o el captcha. Si el destino no viene dentro del enlace, la extensión no puede saltarlos:
+        en ese caso usa “Revelar” para ver hasta dónde llega el enlace.
+      </p>
+    </section>
+  </main>
+
+  <script src="lib/desacortador.js"></script>
+  <script src="lib/ajustes.js"></script>
+  <script src="opciones.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Salta Acortadores</title>
+  <meta name="description" content="Pega un enlace acortado y descubre a dónde lleva de verdad, sin pasar por las páginas de anuncios.">
+  <!-- Si la página se aloja sin servidor (p. ej. GitHub Pages), pon aquí la
+       dirección donde corre la API, por ejemplo https://mi-app.vercel.app -->
+  <meta name="desacortador-api" content="">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icono-192.png">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <main class="pagina">
+    <header class="portada">
+      <img src="favicon.svg" alt="" class="logo" width="48" height="48">
+      <h1>Salta Acortadores</h1>
+      <p class="bajada">Pega un enlace acortado y descubre a dónde lleva de verdad, sin pasar por las páginas de anuncios.</p>
+    </header>
+
+    <form id="formulario" class="buscador" autocomplete="off">
+      <label for="enlace" class="oculto">Enlace acortado</label>
+      <input id="enlace" name="url" type="text" inputmode="url" spellcheck="false" autofocus
+             placeholder="https://bit.ly/… o cualquier enlace" required>
+      <button type="submit" id="boton">Revelar destino</button>
+    </form>
+
+    <section id="resultado" class="tarjeta resultado" aria-live="polite" hidden></section>
+
+    <section class="seccion">
+      <h2>Cómo funciona</h2>
+      <ol class="pasos">
+        <li>
+          <strong>Sigue las redirecciones</strong>
+          <span>Visita el enlace desde el servidor y anota cada salto (bit.ly, t.co, tinyurl…) hasta llegar al destino, sin que tú abras nada.</span>
+        </li>
+        <li>
+          <strong>Busca el destino escondido</strong>
+          <span>Muchos enlaces llevan la dirección real dentro, a veces codificada (<code>?url=</code>, Base64…). Se extrae sin visitar la página de anuncios.</span>
+        </li>
+        <li>
+          <strong>Te avisa si no se puede</strong>
+          <span>Algunos acortadores (ouo.io, linkvertise, shrinkme…) solo dan el destino después del captcha o la cuenta regresiva. En esos casos te lo dice en vez de inventar.</span>
+        </li>
+      </ol>
+    </section>
+
+    <section class="seccion extras">
+      <div class="tarjeta">
+        <h2>Extensión para el navegador</h2>
+        <p>Salta las páginas intermedias automáticamente y convierte los enlaces de las páginas en enlaces directos. Funciona en Chrome, Edge, Brave, Opera y Firefox.</p>
+        <a class="boton secundario" href="https://github.com/JhersonMes/Acortar-link#extensión-para-el-navegador" rel="noopener">Ver cómo instalarla</a>
+      </div>
+      <div class="tarjeta" id="tarjetaMarcador" hidden>
+        <h2>Atajo de marcador</h2>
+        <p>Arrastra este botón a tu barra de marcadores. Al pulsarlo en cualquier página, la revisará aquí.</p>
+        <a class="boton secundario" id="marcador" href="#">Revelar destino</a>
+      </div>
+    </section>
+
+    <footer class="pie">
+      <p>Al revisar un enlace, el servidor lo visita por ti: el sitio de destino ve la visita del servidor, no la tuya.</p>
+    </footer>
+  </main>
+
+  <script src="js/desacortador.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

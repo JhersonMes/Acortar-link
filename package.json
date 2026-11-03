@@ -1,0 +1,14 @@
+{
+  "name": "salta-acortadores",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Revela el destino real de los enlaces acortados y salta las páginas de anuncios: página web + extensión de navegador.",
+  "scripts": {
+    "start": "node server.js",
+    "sync": "node scripts/sincronizar.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
